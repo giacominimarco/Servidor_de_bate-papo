@@ -1,22 +1,43 @@
 <!document html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Socket.IO Chat Example</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link href="lib/css/emoji.css" rel="stylesheet" />
   </head>
   <body>
     <ul class="pages">
       <li class="chat page">
         <div class="chatArea">
           <ul class="messages"></ul>
-          <input class="inputMessage" placeholder="Type here..."/>
+          <input
+            class="inputMessage"
+            placeholder="Type here..."
+            data-emojiable="true"
+            id="conteudo"
+          />
+          <div class="row">
+            <button type="button" class="btn btn-sm">😁</button>
+            <button type="button" class="btn btn-sm">😂</button>
+            <button type="button" class="btn btn-sm">😃</button>
+            <button type="button" class="btn btn-sm">😄</button>
+            <button type="button" class="btn btn-sm">😅</button>
+            <button type="button" class="btn btn-sm">😆</button>
+            <button type="button" class="btn btn-sm">😉</button>
+            <button type="button" class="btn btn-sm">😊</button>
+            <button type="button" class="btn btn-sm">😋</button>
+          </div>
         </div>
       </li>
       <li class="login page">
         <div class="form">
           <h3 class="title">What's your nickname?</h3>
-          <input class="usernameInput" type="text" maxlength="14"/>
+          <input class="usernameInput" type="text" maxlength="14" />
         </div>
       </li>
     </ul>
@@ -24,6 +45,17 @@
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/main.js"></script>
-    <script src="https://rawgit.com/theraot/emoji/master/emoji.js" charset="utf-8"></script>
+    <script
+      src="https://rawgit.com/theraot/emoji/master/emoji.js"
+      charset="utf-8"
+    ></script>
+
+    <script>
+      //usando jQuery, tudo fica mais fácil!! :)
+      $('button').click(function () {
+        var emoji = $(this).text();
+        $('#conteudo').val($('#conteudo').val() + emoji);
+      });
+    </script>
   </body>
 </html>
